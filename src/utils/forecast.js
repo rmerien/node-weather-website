@@ -10,13 +10,15 @@ const forecast = (lat, long, callback) => {
 			callback('Unable to find location.')
 		} else {
 			const data = body.currently
+			console.log(data)
 			callback(undefined, {
                 degrees: data.temperature,
-                rainProbability: data.precipProbability
+				rainProbability: data.precipProbability,
+				apparentTemp: data.apparentTemperature,
+				windSpeed: data.windSpeed
             })
 		}
 	})
-	
 }
 
 module.exports = forecast

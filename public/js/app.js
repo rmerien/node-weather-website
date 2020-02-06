@@ -2,9 +2,11 @@
 const getForecast = (location) => {
 	let textLocation = document.getElementById('forecast-location')
 	let textForecast = document.getElementById('forecast-text')
+	let textWind = document.getElementById('forecast-wind')
 
 	textLocation.textContent = 'Loading...'
 	textForecast.textContent = ''
+	textWind.textContent = ''
 	fetch(`/forecast?address=${location}`).then((response) => {
 		response.json().then((data) => {
 			if (data.error) {
@@ -12,6 +14,7 @@ const getForecast = (location) => {
 			}
 			textLocation.textContent = data.location
 			textForecast.textContent = data.forecast
+			textWind.textContent = Math.round(data.windSpeed * 1.60934) + ' km/h winds'
 		}) 
 	})
 }

@@ -30,13 +30,14 @@ app.get('/forecast', (req, res) => {
 		if (error) {
 			return res.send({ error })
 		}
-		forecast(latitude, longitude, (error, {degrees, rainProbability} = {}) => {
+		forecast(latitude, longitude, (error, {degrees, rainProbability, apparentTemp, windSpeed} = {}) => {
 			if (error) {
 				return res.send({ error })
 			}
 			res.send({
 				location,
-				forecast: `Weather: ${degrees} degrees out. There is a ${rainProbability}% chance of rain.`,
+				forecast: `Weather: ${degrees} degrees out, but it will seem like ${apparentTemp}. There is a ${rainProbability}% chance of rain.`,
+				windSpeed,
 				address: req.query.address
 			});
 		})
