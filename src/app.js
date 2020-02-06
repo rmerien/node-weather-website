@@ -65,7 +65,7 @@ app.get('/help', (req, res) => {
 	})
 })
 
-app.get('/products', (req, res) => {
+app.get('/forecast', (req, res) => {
 	if (!req.query.search) {
 		return res.send({
 			error: 'you must provide a search term'
