@@ -5,7 +5,7 @@ const getForecast = (location) => {
 
 	textLocation.textContent = 'Loading...'
 	textForecast.textContent = ''
-	fetch(`http://localhost:3000/forecast?address=${location}`).then((response) => {
+	fetch(`/forecast?address=${location}`).then((response) => {
 		response.json().then((data) => {
 			if (data.error) {
 				return textLocation.textContent = data.error
